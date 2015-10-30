@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ "$1" = "" ] ; then
+    cat <<EOF
+Usage: $(basename $0) a b c d
+       a == hostadapter id (first one being 0)
+       b == SCSI channel on hostadapter (first one being 0)
+       c == ID
+       d == LUN (first one being 0)
+EOF
+else
+    echo "scsi remove-single-device $*" | sudo tee -a /proc/scsi/scsi
+    cat /proc/scsi/scsi
+fi
+

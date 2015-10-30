@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# python-sphinx: tool for producing documentation for Python projects
+sudo apt-get install --assume-yes --install-recommends python python-dev python-flup python-sphinx python-xml gettext
+
+cd /tmp
+wget http://peak.telecommunity.com/dist/ez_setup.py
+sudo python ez_setup.py 
+
+sudo easy_install werkzeug
+sudo easy_install flup
+sudo easy_install Pygments
+sudo easy_install rope
+sudo easy_install simplejson
+
+sp_dir=/usr/local/lib/python2.6/dist-packages
+echo $sp_dir
+
+sudo ln -s /home/lot/sf/django-trunk/django $sp_dir/
+# sudo ln -s /home/lot/sf/django-trunk/django/bin/django-admin.py /usr/local/bin
+ln -s /home/lot/sf/django-trunk/django/bin/django-admin.py ~/bin
+
+sudo ln -s /home/lot/sf/django-extensions/django_extensions $sp_dir/
+sudo ln -s /home/lot/sf/django-logging-read-only/djangologging $sp_dir/
+sudo ln -s /home/lot/sf/django-tagging-read-only/tagging $sp_dir/
+sudo ln -s /home/lot/sf/django-profile-read-only/userprofile $sp_dir/
+sudo ln -s /home/lot/sf/google-oauth-python/oauth $sp_dir/
+
+exit
+
+
+
+ln -s /home/lot/sf/snippet-copier/snippet_copier.py ~/bin
+
+# python doc tools
+sudo apt-get install python-sphinx
+
+
+

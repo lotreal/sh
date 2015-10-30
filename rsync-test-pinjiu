@@ -1,0 +1,14 @@
+#!/bin/bash
+mount /media/sea 
+if mount | grep -iE ' /media/sea ' ; then
+    BACKUP_DIR=/media/sea/pinjiu
+    mkdir ${BACKUP_DIR} -p
+
+    rsync -arzLP \
+        --delete \
+        --delete-excluded \
+        --iconv utf8,utf-8 \
+        test:/hj/pinjiu/current \
+        ${BACKUP_DIR}/
+fi
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+BACKUP_DIR=/media/sea/test.hj.com/
+
+# --exclude-from=$HOME/.rsync/exclude \
+rsync -avrzP \
+    --delete \
+    --delete-excluded \
+    --iconv utf8,utf-8 \
+    --files-from=${BACKUP_DIR}/test.lst \
+    --exclude-from=${BACKUP_DIR}/test.exclude \
+    test:/ \
+    ${BACKUP_DIR}/

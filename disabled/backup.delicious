@@ -1,0 +1,2 @@
+#!/bin/bash
+curl --user lotreal:$1 -o $2.xml -O 'https://api.del.icio.us/v1/posts/all'

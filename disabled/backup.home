@@ -1,0 +1,56 @@
+#!/bin/bash
+
+BACKUP_NAME="us9"
+
+BACKUP_DIR="$HOME/.backups/$BACKUP_NAME"
+# 2009-06-22-233959
+DATE=`date +%Y-%m-%d-%H%M%S`
+
+BACKUP_FILELIST="$BACKUP_DIR/`whoami`-$BACKUP_NAME-$DATE.lst"
+BACKUP_FILE="$BACKUP_DIR/`whoami`-$BACKUP_NAME-$DATE.tgz"
+
+if [ ! -e "$BACKUP_DIR" ]; then    # Check Backup Directory exists.
+  mkdir -p "$BACKUP_DIR"
+fi
+
+cat >$BACKUP_FILELIST <<EOF
+$HOME/.bash_history
+$HOME/.bash_logout
+$HOME/.bashrc
+$HOME/.emacs
+$HOME/.gemrc
+$HOME/.gitconfig
+$HOME/.profile
+$HOME/.screenrc
+$HOME/.zshrc
+
+$HOME/.emacs.d/
+$HOME/.mutt/
+$HOME/.ant/
+$HOME/.cfghub/
+$HOME/.screen-profiles/
+$HOME/bin/
+$HOME/Documents/
+
+$HOME/sf/
+
+$HOME/ubuntu.defaults/
+$HOME/us.configs/
+$HOME/wuhanx/
+EOF
+
+cecho.sh y "Please wait for compressing files that listed below :"
+cecho.sh g "========================================"
+cat $BACKUP_FILELIST
+cecho.sh y "..."
+tar -cpzPf $BACKUP_FILE -T $BACKUP_FILELIST
+cecho.sh g "have been compressed into $BACKUP_FILE."
+
+# send
+
+BACKUP_TO="\\.us.backups\\$BACKUP_NAME.tgz"
+
+cecho.sh y "Send to $BACKUP_TO..."
+smbclient -c "put $BACKUP_FILE $BACKUP_TO" //192.168.0.22/e$ -U lot%B3auty
+cecho.sh g "Done!, It's Sent!"
+echo ""

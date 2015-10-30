@@ -1,0 +1,59 @@
+#!/bin/bash
+# sudo apt-get install --assume-yes --install-recommends ant
+sudo apt-get install --assume-yes --install-recommends emacs22 emacs-goodies-el xclip ispell
+
+sudo apt-get install --assume-yes --install-recommends avant-window-navigator gloobus-preview
+
+sudo apt-get install --assume-yes --install-recommends gcc make imagemagick ant
+sudo apt-get install --assume-yes --install-recommends cvs subversion git-core mercurial bzr
+sudo apt-get install --assume-yes --install-recommends ncftp vsftpd zip curl mutt openssh-server samba
+
+sudo apt-get install --assume-yes --install-recommends apache2 mysql-server php5 php5-gd php5-mysql phpmyadmin
+sudo apt-get install --assume-yes --install-recommends libapache2-mod-php5 libapache2-mod-fastcgi libapache2-mod-wsgi
+sudo apt-get install --assume-yes --install-recommends php5-cli php5-curl php5-dev php-pear
+
+sudo apt-get install --assume-yes --install-recommends ruby ruby-dev rubygems irb rdoc rake
+
+# python-sphinx: tool for producing documentation for Python projects
+# sudo apt-get install --assume-yes --install-recommends python python-dev python-flup python-sphinx python-xml gettext
+
+# cli jabber client, text browser
+sudo apt-get install --assume-yes --install-recommends freetalk elinks
+
+# Vector Draw
+# sudo apt-get install inkscape 
+# sudo apt-get install manpages-zh 
+
+# compile nmap-5.00
+sudo apt-get install --assume-yes --install-recommends g++ network-manager-openvpn 
+
+# compile emacs23.1
+sudo apt-get install --assume-yes --install-recommends libxpm-dev libjpeg-dev libpng-dev libgif-dev libtiff4-dev texinfo libncurses5-dev
+
+
+exit 0
+
+
+# Jabber/XMPP server
+# sudo apt-get install ejabberd
+
+
+#sudo apt-get install genshi
+
+# sudo apt-get install libsqlite3-0 libsqlite3-dev 
+
+# sudo apt-get install msmtp
+
+# sudo apt-get install sendmail
+
+sudo apt-get install smbclient sqlite 
+
+
+sudo apt-get install texinfo
+sudo apt-get install xterm
+sudo apt-get install zip
+sudo apt-get install libnotify-bin
+
+# sudo apt-get install x-window-system-core 
+# sudo apt-get install gnome-core
+# sudo apt-get install 

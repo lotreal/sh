@@ -1,0 +1,4 @@
+mount /dev/mapper/lot-vicky /media/lv/
+mount /dev/mapper/lotvu-home /media/lotvu-home/
+mount /dev/mapper/archive-private /media/private/
+mount /dev/disk/by-label/sourceforge /media/sf

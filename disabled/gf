@@ -1,0 +1,4 @@
+#!/bin/bash
+#java -jar ~/share/bin/JAP.jar
+wine /luo/bin/gf/fg686p.exe
+#proxychains gwibber

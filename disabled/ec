@@ -1,0 +1,2 @@
+screen -X select 1
+emacsclient $@

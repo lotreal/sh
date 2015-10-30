@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ "$1" = "" ] ; then
+    cat <<EOF
+Usage: $(basename $0) hostid
+       hostid == hostadapter id (first one being 0)
+EOF
+else
+    echo "- - -" | sudo tee -a /sys/class/scsi_host/host$1/scan
+    cat /proc/scsi/scsi
+fi

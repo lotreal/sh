@@ -1,0 +1,2 @@
+PID=$$
+readlink /proc/${PID}/exe

@@ -1,0 +1,15 @@
+#!/bin/bash
+mount /media/sea 
+if mount | grep -iE ' /media/sea ' ; then
+    BACKUP_DIR=/media/sea/qu
+    mkdir ${BACKUP_DIR} -p
+
+    rsync -arzLP \
+        --delete \
+        --delete-excluded \
+        --log-file=${BACKUP_DIR}/qu.log \
+        --iconv utf8,utf-8 \
+        test:/hj/qu/current \
+        ${BACKUP_DIR}/
+fi
+

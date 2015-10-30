@@ -1,0 +1,60 @@
+#!/bin/bash
+
+scup()
+{
+    if [ -d "$1" ]; then
+	if [ -d "$1/.git" ]; then
+	    cecho.sh g "git found ! ( $1 )"
+	    echo "            updating ............."
+	    cd "$1"
+	    git pull
+	elif [ -d "$1/.svn" ]; then
+	    cecho.sh g "svn found ! ( $1 )"
+	    echo "            updating ............."
+	    svn update "$1"
+	elif [ -d "$1/.hg" ]; then
+	    cecho.sh g "hg found ! ( $1 )"
+	    echo "            updating ............."
+	    cd "$1"
+	    hg pull
+
+	else
+	    cecho.sh r "@_@ $1 not using svn or git ?"
+	fi
+    else
+	cecho.sh r "$1 not a directory."
+    fi
+    cecho.sh g "< < < DONE"
+}
+
+cecho.sh y "[ 1 ] updating apt-get..."
+sudo apt-get update
+
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+
+sudo apt-get autoremove
+sudo apt-get autoclean
+
+exit
+cecho.sh y "[ 2 ] updating gem..."
+gem list
+sudo gem update
+sudo gem cleanup
+gem list
+
+
+cecho.sh y "[ 3 ] updating python package installed by easy_install"
+sudo easy_install -U werkzeug
+sudo easy_install -U flup
+sudo easy_install -U Pygments
+sudo easy_install -U rope
+sudo easy_install -U simplejson
+sudo easy_install -U sphinx
+
+SOURCE_DIR="$HOME/sf"
+cecho.sh y "[ 4 ] updating source code at $SOURCE_DIR"
+#find ~/sf -maxdepth 1 -type d
+for f in $(ls $SOURCE_DIR); do
+    scup "$SOURCE_DIR/$f"
+done

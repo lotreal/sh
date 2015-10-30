@@ -1,0 +1,26 @@
+#!/bin/bash
+mount /media/sea 
+if mount | grep -iE ' /media/sea ' ; then
+    date=`date "+%Y-%m-%dT%H:%M:%S"`
+
+    BACKUP_DIR=/media/sea/test.hj.com
+    mkdir ${BACKUP_DIR} -p
+
+    ssh test '/opt/bin/dump-all'
+
+    rsync -arzP \
+        --delete \
+        --delete-excluded \
+        --iconv utf8,utf-8 \
+        --log-file=${BACKUP_DIR}/incomplete_back-$date.log \
+        --link-dest=${BACKUP_DIR}/current \
+        --files-from=${BACKUP_DIR}/test.include \
+        --exclude-from=${BACKUP_DIR}/test.exclude \
+        test:/ \
+        ${BACKUP_DIR}/incomplete_back-$date \
+        && mv ${BACKUP_DIR}/incomplete_back-$date ${BACKUP_DIR}/back-$date \
+        && mv ${BACKUP_DIR}/incomplete_back-$date.log ${BACKUP_DIR}/back-$date.log \
+        && rm -f ${BACKUP_DIR}/current \
+        && ln -s ${BACKUP_DIR}/back-$date ${BACKUP_DIR}/current
+fi
+

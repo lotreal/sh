@@ -1,0 +1,4 @@
+#!/bin/bash
+cd $HOME/.emacs.d/lisp
+emacs -batch -L `pwd` -f batch-byte-compile *.el
+#mv $HOME/.emacs.d/src/*.elc $HOME/.emacs.d/lisp/

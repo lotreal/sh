@@ -1,0 +1,1 @@
+autossh -M 6002 -NR 7002:localhost:22 zdyue

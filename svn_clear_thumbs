@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for file in $(find . -name Thumbs.db)
+do
+    svn rm $file
+    dir=$(dirname $file)
+    svn propget svn:ignore $dir -v
+    svn propset svn:ignore 'Thumbs.db' $dir
+done

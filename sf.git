@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /sourceforge/sources
+sudo git clone $1

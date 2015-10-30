@@ -1,0 +1,13 @@
+#!/bin/bash
+mount /media/sea 
+if mount | grep -iE ' /media/sea ' ; then
+    BACKUP_DIR=/media/sea
+    mkdir ${BACKUP_DIR} -p
+
+    rsync -arzP \
+        --delete \
+        --delete-excluded \
+        --iconv utf8,utf-8 \
+        test:/hj/tuhu-tc \
+        ${BACKUP_DIR}/
+fi

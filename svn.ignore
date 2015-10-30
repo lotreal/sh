@@ -1,0 +1,12 @@
+#!/bin/bash
+: ${1:?"svn: Not enough arguments provided"}
+svn rm $1 --keep-local
+ignore=$(basename $1)
+dir=$(dirname $1)
+if test "x$(svn propget svn:ignore $dir | wc -w)" == "x0";
+then
+    svn propset svn:ignore $ignore $dir
+else
+    svn propget svn:ignore $dir | sed '/^\s*$/d' | sed "$ a $ignore" | svn propset svn:ignore -F - $dir
+fi
+svn propget svn:ignore $dir

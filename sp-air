@@ -1,0 +1,1 @@
+autossh -M 6001 -NR 7001:localhost:22 lot@192.168.34.$1

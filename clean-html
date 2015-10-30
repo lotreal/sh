@@ -1,0 +1,10 @@
+#!/bin/bash
+echo 'clean html...'
+sed -i 's@\r@@g' $1
+sed -i 's@\.\./assets@{{$RES_STATIC}}/assets@g' $1
+sed -i 's@\.\./data-pic@{{$RES_STATIC}}/data-pic@g' $1
+# sed 's@^\([ ]*\)<\(link[^>]*\)>[ ]*$@\1<\2/>@g' $1 | head
+exit
+sed -i 's@^\([ ]*\)<\(link[^>]*\)>[ ]*$@\1<\2/>@g' $1
+sed -i 's@^\([ ]*\)<\(img[^>]*\)>[ ]*$@\1<\2/>@g' $1
+sed -i 's@^\([ ]*\)<\(hr[^>]*\)>[ ]*$@\1<\2/>@g' $1

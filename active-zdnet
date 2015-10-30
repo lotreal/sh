@@ -1,0 +1,2 @@
+curl -d "username=$1&pwd=zdsoft&mode=login&gaenable=0&host=&mac=" http://10.10.10.5:8002/index.php
+echo 'nameserver 8.8.8.8' > /etc/resolv.conf
